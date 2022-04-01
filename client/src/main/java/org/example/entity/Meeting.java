@@ -1,27 +1,20 @@
 package org.example.entity;
 
-import javax.persistence.*;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import javax.validation.constraints.Pattern;
+
 public class Meeting {
     private int id;
     private String name;
     private String location;
     private String descriptions;
+    @Pattern(regexp = "\\d\\d\\d\\d-\\d\\d-\\d\\d \\d\\d:\\d\\d:\\d\\d", message="используйте паттерн xxxx-xx-xx xx:xx:xx")
     private String localDateTimeStart;
+    @Pattern(regexp = "\\d\\d\\d\\d-\\d\\d-\\d\\d \\d\\d:\\d\\d:\\d\\d", message="используйте паттерн xxxx-xx-xx xx:xx:xx")
     private String localDateTimeEnd;
+
     public Meeting() {
-        Date date = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-        localDateTimeStart = formatForDateNow.format(date);
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, 1);
-        date = cal.getTime();
-        localDateTimeEnd = formatForDateNow.format(date);
     }
-
     public Meeting(String name, String location, String descriptions, String localDateTimeStart, String localDateTimeEnd) {
         this.name = name;
         this.location = location;

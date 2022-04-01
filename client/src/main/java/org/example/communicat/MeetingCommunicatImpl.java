@@ -39,6 +39,7 @@ public class MeetingCommunicatImpl implements MeetingCommunicat{
 
     @Override
     public void addMeeting(Meeting meeting) {
+
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(serverUrl, meeting, String.class);
         System.out.println(responseEntity.getBody());
     }
